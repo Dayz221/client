@@ -1,0 +1,31 @@
+.change__container {
+    display: flex;
+    align-items: center;
+    border-radius: 16px;
+    border: 1px solid #8753FF;
+    overflow: hidden;
+    user-select: none;
+}
+
+.change__option {
+    padding: 6px;
+    font-size: 13px;
+    color: #a178ff;
+    border-right: 1px solid #8753FF;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.change__option:last-child {
+    border-right: none;
+    padding-right: 10px;
+}
+
+.change__option:first-child {
+    padding-left: 10px;
+}
+
+.change__option.active {
+    background-color: #8753FF;
+    color: white;
+}

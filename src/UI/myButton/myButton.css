@@ -1,0 +1,22 @@
+.myButton {
+    outline: none;
+    width: 100%;
+    color: rgba(255,255,255,.4);
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: rgb(0,0,0,.12);
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,.6);
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,.1);
+    transition: all .3s;
+    /* font-weight: 700; */
+}
+
+.myButton:hover {
+    background-color: #8753FF;
+    border-color: #8753FF;
+    box-shadow: 0px 0px 5px 0px #8753FF;
+    color: white;
+}
