@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: "https://server-one-liard.vercel.app:8000/api"
+    baseURL: "https://server-one-liard.vercel.app/api"
 })
 
 instance.interceptors.request.use(config => {
