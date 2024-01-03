@@ -5,10 +5,15 @@ import { patchTodo } from "../features/todos.js"
 
 export const Task = ({ task, openEdit }) => {
     const [isHide, setIsHide] = useState(true)
+    const [curChange, setCurChange] = useState(curTask.isDone)
 
     const curTask = useSelector(store => store.todos.todos.find(el => el._id === task._id))
     const dispatch = useDispatch()
 
+    function changeHandler () {
+        setCurChange(prev => !prev)
+        dispatch(patchTodo({ id: curTask._id, task: { isDone: !curTask.isDone } }))
+    }
 
     return (
         <div className={classnames("task", { hide: isHide })}>
@@ -29,8 +34,8 @@ export const Task = ({ task, openEdit }) => {
                             <input
                                 type="checkbox"
                                 className="task_checkbox"
-                                checked={curTask.isDone}
-                                onChange={() => { dispatch(patchTodo({ id: curTask._id, task: { isDone: !curTask.isDone } })) }}
+                                checked={curChange}
+                                onChange={() => { changeHandler() }}
                             />
                         </label>
                     </div>
