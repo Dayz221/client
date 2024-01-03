@@ -29,8 +29,8 @@ export const MainPage = () => {
 
     function millisToDate(millis) {
         const date = new Date(millis)
-        // return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}T${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`
-        return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`
+        return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}T${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`
+        // return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`
     }
 
     function openEdit(id) {
@@ -148,9 +148,9 @@ export const MainPage = () => {
 
                             <MyLabel text="Начало и конец">
                                 {/* <div style={{ display: "flex", justifyContent: "space-between" }}> */}
-                                <MyInput type="date" value={formVals.start !== 0 ? millisToDate(formVals.start) : ""} onChange={(e) => setFormVals({ ...formVals, start: Date.parse(e.target.value) })} />
+                                <MyInput type="datetime-local" value={formVals.start !== 0 ? millisToDate(formVals.start) : ""} onChange={(e) => setFormVals({ ...formVals, start: Date.parse(e.target.value) })} />
                                 {/* <div style={{ flex: "1 1 3%" }}></div> */}
-                                <MyInput type="date" value={formVals.end !== 0 ? millisToDate(formVals.end) : ""} min={millisToDate(formVals.start)} onChange={(e) => setFormVals({ ...formVals, end: Date.parse(e.target.value) })} />
+                                <MyInput type="datetime-local" value={formVals.end !== 0 ? millisToDate(formVals.end) : ""} min={millisToDate(formVals.start)} onChange={(e) => setFormVals({ ...formVals, end: Date.parse(e.target.value) })} />
                                 {/* </div> */}
                             </MyLabel>
 
@@ -168,11 +168,11 @@ export const MainPage = () => {
                             </MyLabel>
 
                             <MyLabel text="Начало и конец">
-                                <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                    <MyInput type="date" value={formVals.start !== 0 ? millisToDate(formVals.start) : ""} onChange={(e) => setFormVals({ ...formVals, start: Date.parse(e.target.value) })} />
-                                    <div style={{ flex: "1 1 3%" }}></div>
-                                    <MyInput type="date" value={formVals.end !== 0 ? millisToDate(formVals.end) : ""} min={millisToDate(formVals.start)} onChange={(e) => setFormVals({ ...formVals, end: Date.parse(e.target.value) })} />
-                                </div>
+                                {/* <div style={{ display: "flex", justifyContent: "space-between" }}> */}
+                                <MyInput type="datetime-local" value={formVals.start !== 0 ? millisToDate(formVals.start) : ""} onChange={(e) => setFormVals({ ...formVals, start: Date.parse(e.target.value) })} />
+                                {/* <div style={{ flex: "1 1 3%" }}></div> */}
+                                <MyInput type="datetime-local" value={formVals.end !== 0 ? millisToDate(formVals.end) : ""} min={millisToDate(formVals.start)} onChange={(e) => setFormVals({ ...formVals, end: Date.parse(e.target.value) })} />
+                                {/* </div> */}
                             </MyLabel>
 
                             <MyButton onClick={() => patchTask()}>Сохранить</MyButton>
