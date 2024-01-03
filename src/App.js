@@ -5,7 +5,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import './styles/App.css'
 
 function App() {
-
   return (
     <div id="App">
       <Routes>

@@ -52,21 +52,20 @@ export const todosSlice = createSlice({
     reducers: {
         setTodosAction: (state, action) => {
             state.todos = action.payload
-            console.log(action.payload)
         },
         addTodoAction: (state, action) => {
             state.todos.push(action.payload)
         },
         patchTodoAction: (state, action) => {
-            const localId = state.todos.findIndex(el=> el._id == action.payload._id)
+            const localId = state.todos.findIndex(el=> el._id === action.payload._id)
             state.todos[localId] = action.payload
         },
         setDoneAction: (state, action) => {
-            const localId = state.todos.findIndex(el=> el._id == action.payload.id)
+            const localId = state.todos.findIndex(el=> el._id === action.payload.id)
             state.todos[localId].isDone = action.payload.isDone
         },
         deleteTodoAction: (state, action) => {
-            state.todos = state.todos.filter(el => el._id != action.payload)
+            state.todos = state.todos.filter(el => el._id !== action.payload)
         }
     },
     extraReducers: (builder) => {

@@ -74,8 +74,22 @@ export const MainPage = () => {
     }
 
     function dateFilter(tasks) {
-        const date = new Date().getTime()
-        return tasks.filter(el => ((el.start <= date && date <= el.end) || (el.start == 0 || el.end == 0)))
+        return tasks.filter(el => {
+            const date = new Date().getTime()
+            const start = new Date(el.start)
+            const startDate = new Date(
+                start.getFullYear(), 
+                start.getMonth(), 
+                start.getDate()
+            ).getTime()
+            const end = new Date(el.end)
+            const endDate = new Date(
+                end.getFullYear(), 
+                end.getMonth(), 
+                end.getDate()
+            ).getTime()
+            return ((startDate <= date && date <= endDate) || (el.start == 0 || el.end == 0))
+        })
     }
 
     function activeFilter(tasks) {

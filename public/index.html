@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Задачи</title>
-    
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Задачи</title>
+
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    const PUBLICKEY = "BO0ml9NA7N12Xr_I1fxxN1YkgrwCuT1eSSO-zpaZ4CUZaSyGJluTXYYY1BBn5Eb-FqgA_SsOX8MOhatEMcrx-d0"
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js', { scope: "/" }).then(
+          (registration) => {
+            console.log(registration.scope)
+          },
+          (err) => console.log(err)
+        )
+
+        navigator.serviceWorker.ready.then(async (registration) => {
+          const subscription = await registration.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: PUBLICKEY
+          })
+
+          fetch(
+            "http://localhost:8000/api/subscribe", {
+              method: "POST",
+              body: JSON.stringify(subscription),
+              headers: {
+                "Content-Type": 'application/json',
+                "Authorization": 'Bearer '+ window.localStorage.getItem('token')
+              }
+            }
+          )
+        })
+      })
+    }
+  </script>
+</body>
+
 </html>
