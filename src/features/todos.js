@@ -30,6 +30,14 @@ export const patchTodo = createAsyncThunk(
     }
 )
 
+export const setDone = createAsyncThunk(
+    'todos/setDone',
+    async ({id, isDone}, { dispatch }) => {
+        dispatch(setDoneAction({id: id, isDone}))
+        await axios.patch(`/patchTask/${id}`, {isDone})
+    }
+)
+
 export const deleteTodo = createAsyncThunk(
     'todos/deleteTodo',
     async (id, { dispatch }) => {
@@ -44,6 +52,7 @@ export const todosSlice = createSlice({
     reducers: {
         setTodosAction: (state, action) => {
             state.todos = action.payload
+            console.log(action.payload)
         },
         addTodoAction: (state, action) => {
             state.todos.push(action.payload)
@@ -51,6 +60,10 @@ export const todosSlice = createSlice({
         patchTodoAction: (state, action) => {
             const localId = state.todos.findIndex(el=> el._id == action.payload._id)
             state.todos[localId] = action.payload
+        },
+        setDoneAction: (state, action) => {
+            const localId = state.todos.findIndex(el=> el._id == action.payload.id)
+            state.todos[localId].isDone = action.payload.isDone
         },
         deleteTodoAction: (state, action) => {
             state.todos = state.todos.filter(el => el._id != action.payload)
@@ -85,5 +98,5 @@ export const todosSlice = createSlice({
     }
 })
 
-export const { setTodosAction, addTodoAction, deleteTodoAction, patchTodoAction } = todosSlice.actions
+export const { setTodosAction, addTodoAction, deleteTodoAction, patchTodoAction, setDoneAction } = todosSlice.actions
 export default todosSlice.reducer
