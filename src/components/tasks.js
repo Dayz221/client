@@ -12,7 +12,7 @@ export const Task = ({ task, openEdit }) => {
 
     function changeHandler () {
         setCurChange(prev => !prev)
-        dispatch(patchTodo({ id: curTask._id, task: { isDone: !curTask.isDone } }))
+        dispatch(patchTodo({ id: curTask._id, task: { isDone: curChange } }))
     }
 
     return (
