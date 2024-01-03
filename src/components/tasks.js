@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import classnames from "classnames"
 import { useDispatch, useSelector } from "react-redux"
 import { patchTodo } from "../features/todos.js"
@@ -7,7 +7,7 @@ export const Task = ({ task, openEdit }) => {
     const [isHide, setIsHide] = useState(true)
 
     const curTask = useSelector(store => store.todos.todos.find(el => el._id === task._id))
-    const [curChange, setCurChange] = useState(curTask.isDone)
+    const [curChange, setCurChange] = useState(true)
     const dispatch = useDispatch()
 
     function changeHandler () {
@@ -30,11 +30,11 @@ export const Task = ({ task, openEdit }) => {
                         </div>
                     </button>
                     <div className="task_checkbox__container">
-                        <label className={classnames('checkbox__label', { chkd: curTask.isDone })}>
+                        <label className={classnames('checkbox__label', { chkd: curChange })}>
                             <input
                                 type="checkbox"
                                 className="task_checkbox"
-                                checked={curChange}
+                                checked={false}
                                 onChange={() => { changeHandler() }}
                             />
                         </label>
