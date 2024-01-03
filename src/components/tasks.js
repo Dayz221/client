@@ -5,9 +5,9 @@ import { patchTodo } from "../features/todos.js"
 
 export const Task = ({ task, openEdit }) => {
     const [isHide, setIsHide] = useState(true)
-    const [curChange, setCurChange] = useState(curTask.isDone)
 
     const curTask = useSelector(store => store.todos.todos.find(el => el._id === task._id))
+    const [curChange, setCurChange] = useState(curTask.isDone)
     const dispatch = useDispatch()
 
     function changeHandler () {
