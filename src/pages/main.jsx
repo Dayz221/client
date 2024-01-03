@@ -16,7 +16,7 @@ export const MainPage = () => {
     useCheckAuth()
 
     const [searchText, setSearchText] = useState("")
-    const [filter, setFilters] = useState("all")
+    const [filter, setFilters] = useState("active")
 
     const [newFormActive, setNewFormActive] = useState(false)
     const [editFormActive, setEditFormActive] = useState(false)
