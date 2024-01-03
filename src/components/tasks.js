@@ -15,6 +15,10 @@ export const Task = ({ task, openEdit }) => {
         dispatch(patchTodo({ id: curTask._id, task: { isDone: curChange } }))
     }
 
+    useEffect(() => {
+        setCurChange(curTask.isDone)
+    }, [curTask.isDone])
+
     return (
         <div className={classnames("task", { hide: isHide })}>
             <div className="task__container" onClick={() => setIsHide(prev => !prev)}>
