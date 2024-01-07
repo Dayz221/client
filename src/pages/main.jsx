@@ -70,7 +70,7 @@ export const MainPage = () => {
     }
 
     function findFilter(tasks, text) {
-        return tasks.filter(el => el.name.toLowerCase().includes(text.toLowerCase()))
+        return tasks.filter(el => el.name.toLowerCase().includes(text.toLowerCase()) || el.description.toLowerCase().includes(text.toLowerCase()))
     }
 
     function dateFilter(tasks) {
