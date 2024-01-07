@@ -1,6 +1,7 @@
 const version = "v5"
 
 log = msg => console.log(`${version}:${msg}`)
+console.log(1)
 
 self.addEventListener('push', event => {
     сonsole.log(1)
