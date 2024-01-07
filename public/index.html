@@ -11,35 +11,36 @@
 <body>
   <div id="root"></div>
   <script>
-    const PUBLICKEY = "BO0ml9NA7N12Xr_I1fxxN1YkgrwCuT1eSSO-zpaZ4CUZaSyGJluTXYYY1BBn5Eb-FqgA_SsOX8MOhatEMcrx-d0"
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw5.js', { scope: "/" }).then(
-        (registration) => {
-          console.log(registration.scope)
-        },
-        (err) => console.log(err)
-      )
-
-      navigator.serviceWorker.ready.then(async (registration) => {
-        const subscription = await registration.pushManager.subscribe({
-          userVisibleOnly: true,
-          applicationServerKey: PUBLICKEY
-        })
-        console.log("service-worker ready")
-
-        const res = await fetch(
-          "https://server-todolist.vercel.app/api/subscribe", {
-          method: "POST",
-          body: JSON.stringify(subscription),
-          headers: {
-            "Content-Type": 'application/json',
-            "Authorization": 'Bearer ' + window.localStorage.getItem('token')
-          }
-        }
+    const PUBLICKEY = "BCpghkmpy6LKB3U4AhtKsScOLhLumcmAPdpyIpFqMXuAh3i5SEtMsmud7Dw-FCMLbGh4_TqnRK4V_f6Ds-3piN8"
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw5.js', { scope: "/" }).then(
+          (registration) => {
+            console.log(registration.scope)
+          },
+          (err) => console.log(err)
         )
-        console.log(res.json())
+
+        navigator.serviceWorker.ready.then(async (registration) => {
+          const subscription = await registration.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: PUBLICKEY
+          })
+          console.log("service-worker ready")
+
+          await fetch(
+            "https://server-todolist.vercel.app/api/subscribe", {
+              method: "POST",
+              body: JSON.stringify(subscription),
+              headers: {
+                "Content-Type": 'application/json',
+                "Authorization": 'Bearer '+ window.localStorage.getItem('token')
+              }
+            }
+          )
+        })
       })
-    })
+    }
   </script>
 </body>
 
