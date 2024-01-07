@@ -7,7 +7,6 @@ self.addEventListener('push', event => {
     const options = {
         body: data.body
     }
-    console.log("push")
     let promise = self.registration.showNotification(data.title, options)
     event.waitUntil(promise)
 })

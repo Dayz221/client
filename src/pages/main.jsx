@@ -87,7 +87,7 @@ export const MainPage = () => {
                 end.getFullYear(), 
                 end.getMonth(), 
                 end.getDate()
-            ).getTime()
+            ).getTime() + 24*60*60*1000
             return ((startDate <= date && date <= endDate) || (el.start == 0 || el.end == 0))
         })
     }
