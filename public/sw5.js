@@ -3,6 +3,7 @@ const version = "v4"
 log = msg => console.log(`${version}:${msg}`)
 
 self.addEventListener('push', event => {
+    сonsole.log(1)
     const data = event.data.json()
     const options = {
         body: data.body
