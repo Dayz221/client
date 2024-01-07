@@ -14,7 +14,7 @@
     const PUBLICKEY = "BO0ml9NA7N12Xr_I1fxxN1YkgrwCuT1eSSO-zpaZ4CUZaSyGJluTXYYY1BBn5Eb-FqgA_SsOX8MOhatEMcrx-d0"
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js', { scope: "/" }).then(
+        navigator.serviceWorker.register('/sw5.js', { scope: "/" }).then(
           (registration) => {
             console.log(registration.scope)
           },
@@ -26,6 +26,7 @@
             userVisibleOnly: true,
             applicationServerKey: PUBLICKEY
           })
+          console.log("service-worker ready")
 
           fetch(
             "https://server-todolist.vercel.app/api/subscribe", {
