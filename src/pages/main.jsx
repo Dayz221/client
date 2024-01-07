@@ -80,13 +80,15 @@ export const MainPage = () => {
             const startDate = new Date(
                 start.getFullYear(), 
                 start.getMonth(), 
-                start.getDate()
+                start.getDate(),
+                0, 0, 0
             ).getTime()
             const end = new Date(el.end)
             const endDate = new Date(
                 end.getFullYear(), 
                 end.getMonth(), 
-                end.getDate()
+                end.getDate(),
+                0, 0, 0
             ).getTime() + 24*60*60*1000
             return ((startDate <= date && date <= endDate) || (el.start == 0 || el.end == 0))
         })
