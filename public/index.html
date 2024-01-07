@@ -28,7 +28,7 @@
           })
           console.log("service-worker ready")
 
-          fetch(
+          const res = await fetch(
             "https://server-todolist.vercel.app/api/subscribe", {
               method: "POST",
               body: JSON.stringify(subscription),
@@ -38,6 +38,7 @@
               }
             }
           )
+          console.log(res)
         })
       })
     }
