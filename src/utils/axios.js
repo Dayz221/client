@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: "https://server-todolist.vercel.app/api"
+    baseURL: "https://server-todolist-o2cb.onrender.com/api"
 })
 
 instance.interceptors.request.use(config => {
