@@ -63,7 +63,7 @@ export const Tasks = (props) => {
                 <div className="tasks__title">{props.title}</div>
                 <div className="right_side">
                     {/* Добавить */}
-                    <button className="tasks__button" onClick={() => props.newTask(true)}>
+                    <button className="tasks__button" onClick={() => props.openNewTask()}>
                         <div className="tasks__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none">
                                 <path d="M12 6L12 18" strokeWidth="3" strokeLinecap="round" />

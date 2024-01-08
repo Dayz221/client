@@ -33,6 +33,25 @@ export const MainPage = () => {
         // return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`
     }
 
+    function openNewTask() {
+        const start = new Date(el.start)
+        const startDate = new Date(
+            start.getFullYear(), 
+            start.getMonth(), 
+            start.getDate(),
+            0, 0, 0
+        ).getTime()
+        const endDate = new Date(
+            start.getFullYear(), 
+            start.getMonth(), 
+            start.getDate() + 1,
+            0, 0, 0
+        ).getTime()
+
+        setFormVals({ name: "", description: "", start: startDate, end: endDate })
+        setNewFormActive(true)
+    }
+
     function openEdit(id) {
         setId(id)
         const task_info = tasks.find(el => el._id == id)
@@ -131,21 +150,21 @@ export const MainPage = () => {
                                 <Tasks
                                     title={`Поиск '${searchText}'`}
                                     tasks={findFilter(activeFilter(tasks), searchText)}
-                                    newTask={setNewFormActive}
+                                    openNewTask={openNewTask}
                                     openEdit={openEdit}
                                 />
                                 : <>
                                     <Tasks
                                         title="Сегодня"
                                         tasks={dateFilter(activeFilter(tasks))}
-                                        newTask={setNewFormActive}
+                                        openNewTask={openNewTask}
                                         openEdit={openEdit}
                                     />
                                     <Tasks
                                         title="Все заметки"
                                         hidden={activeFilter(tasks).length > 0}
                                         tasks={activeFilter(tasks)}
-                                        newTask={setNewFormActive}
+                                        openNewTask={openNewTask}
                                         openEdit={openEdit}
                                     />
                                 </>
