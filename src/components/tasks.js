@@ -56,6 +56,25 @@ export const Task = ({ task, openEdit }) => {
 
 export const Tasks = (props) => {
     const [isHide, setIsHide] = useState(!!props.hidden)
+    const [numOfDoneTasks, setNumOfDoneTasks] = useState(0)
+
+    useEffect(() => {
+        let num = 0
+        props.tasks.forEach(el => {
+            if (el.isDone) num++
+        })
+        setNumOfDoneTasks(num)
+    }, [props.tasks])
+
+    function getColor(color1, color2, n, n0) {
+        if (n0 == 0) {
+            return `${color2[0]},${color2[1]},${color2[2]}`
+        }
+        const r = color1[0] + (color2[0]-color1[0])*(n/n0)
+        const g = color1[1] + (color2[1]-color1[1])*(n/n0)
+        const b = color1[2] + (color2[2]-color1[2])*(n/n0)
+        return `${r},${g},${b}`
+    }
 
     return (
         <div className={classnames("tasks_group", { hide: isHide })}>
@@ -63,6 +82,15 @@ export const Tasks = (props) => {
                 <div className="tasks__title">{props.title}</div>
                 <div className="right_side">
                     {/* Добавить */}
+                    <div 
+                        className="numOfDone__table"
+                        style={{
+                            backgroundColor: `rgba(${getColor([255, 81, 81], [99,219,99], numOfDoneTasks, props.tasks.length)}, .4)`,
+                            borderColor: `rgb(${getColor([255, 81, 81], [99,219,99], numOfDoneTasks, props.tasks.length)})`
+                        }}    
+                    >
+                        {numOfDoneTasks} / {props.tasks.length}
+                    </div>
                     <button className="tasks__button" onClick={() => props.openNewTask()}>
                         <div className="tasks__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none">
