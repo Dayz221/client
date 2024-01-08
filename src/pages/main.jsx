@@ -34,7 +34,7 @@ export const MainPage = () => {
     }
 
     function openNewTask() {
-        const start = new Date(el.start)
+        const start = new Date()
         const startDate = new Date(
             start.getFullYear(), 
             start.getMonth(), 
