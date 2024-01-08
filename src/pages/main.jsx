@@ -130,10 +130,6 @@ export const MainPage = () => {
         dispatch(getTodos())
     }, [])
 
-    useEffect(() => {
-        setFormVals({ name: "", description: "", start: 0, end: 0 })
-    }, [newFormActive])
-
     return (
         <>
             {isLoading
