@@ -34,21 +34,9 @@ export const MainPage = () => {
     }
 
     function openNewTask() {
-        const start = new Date()
-        const startDate = new Date(
-            start.getFullYear(), 
-            start.getMonth(), 
-            start.getDate(),
-            0, 0, 0
-        ).getTime()
-        const endDate = new Date(
-            start.getFullYear(), 
-            start.getMonth(), 
-            start.getDate() + 1,
-            0, 0, 0
-        ).getTime()
+        const date = new Date().getTime()
 
-        setFormVals({ name: "", description: "", start: startDate, end: endDate })
+        setFormVals({ name: "", description: "", start: date, end: date+24*60*60*1000 })
         setNewFormActive(true)
     }
 
