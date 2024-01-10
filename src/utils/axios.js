@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: "https://nice-handkerchief-cow.cyclic.app/api"
+    baseURL: "https://todo-list-dayz221.onrender.com/api"
 })
 
 instance.interceptors.request.use(config => {
